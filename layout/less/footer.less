@@ -1,0 +1,69 @@
+/* This file is part of nginx-fancyindex-flat-theme.
+ *
+ * nginx-fancyindex-flat-theme is free software: you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or (at your
+ * option) any later version.
+ *
+ * nginx-fancyindex-flat-theme is distributed in the hope that it will be
+ * useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
+ * Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License along with
+ * this program. If not, see
+ *
+ *  http://www.gnu.org/licenses/
+ *
+ *
+ * Copyright (C)
+ *  2018 Alexander Haase <ahaase@alexhaase.de>
+ */
+
+/**
+ * This file configures the footer navbar. The navbar will be transparent with
+ * muted text. If the content doesn't fill the whole brwoser window, the footer
+ * will stick to the bottom of it, otherwise it will reside at the bottom of the
+ * page.
+ *
+ * The following classes will extend the 'navbar' and 'navbar-bottom' classes of
+ * bootstrap, so the footer tag should use these classes in addition to the
+ * 'footer' class defined below.
+ */
+
+/**
+ * The height of the footer navbar.
+ *
+ * The height of the footer is required for calculating paddings and margins for
+ * the body. Although it won't be set for the footer (the default value from
+ * bootstrap will be used), it will be defined here to be used in other files.
+ */
+@footer-height: 20px;
+
+
+/* If the content doesn't fill the entire browser window, the footer should
+ * still fit to the bottom of the page - in this case the bottom of the browser
+ * window. The following snippet will expand the content of the page, so the
+ * footer will be displayed at the bottom of the page or the window, depending
+ * on the size of the content.
+ *
+ * This snippet is based on an answer (https://stackoverflow.com/a/27635568)
+ * of abmmhasan (https://stackoverflow.com/users/3300834) at
+ * stackoverlow.com, licensed under CC-BY-SA 3.0. */
+html {
+    position:   relative;
+    min-height: 100%;
+}
+
+.footer {
+    position: absolute;
+    bottom:   0;
+    width:    100%;
+    margin-bottom: 0;
+
+    a,
+    a:hover,
+    a:focus {
+        color: @brandColor;
+    }
+}

@@ -1,0 +1,53 @@
+/* This file is part of nginx-fancyindex-flat-theme.
+ *
+ * nginx-fancyindex-flat-theme is free software: you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or (at your
+ * option) any later version.
+ *
+ * nginx-fancyindex-flat-theme is distributed in the hope that it will be
+ * useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
+ * Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License along with
+ * this program. If not, see
+ *
+ *  http://www.gnu.org/licenses/
+ *
+ *
+ * Copyright (C)
+ *  2018 Alexander Haase <ahaase@alexhaase.de>
+ */
+
+/**
+ * This file configures the header navbar. There will be only slight differences
+ * from bootstrap's default navbar: the background is green with white text.
+ *
+ * NOTE: This class should be used together with the `navbar` class.
+ */
+
+/**
+ * The height of the header navbar.
+ */
+@header-height: 24px;
+
+.header {
+    background-color: @brandColor;
+    color:            @white;
+
+    /* The default bootstrap navbar is higher than we'd like to have it. The
+     * following snippet will minimize it to the configured height above.
+     *
+     * This snippet is based on an answer (https://stackoverflow.com/a/25093300)
+     * of Hoang Vu Tgtt (https://stackoverflow.com/users/1804068) at
+     * stackoverlow.com, licensed under CC-BY-SA 3.0. */
+    min-height: @header-height;
+
+    .navbar-brand {
+        padding:     0 @header-height / 3;
+        font-size:   @header-height * 2/3;
+        line-height: @header-height;
+        height:      @header-height;
+    }
+}

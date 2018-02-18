@@ -1,0 +1,44 @@
+/* This file is part of nginx-fancyindex-flat-theme.
+ *
+ * nginx-fancyindex-flat-theme is free software: you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or (at your
+ * option) any later version.
+ *
+ * nginx-fancyindex-flat-theme is distributed in the hope that it will be
+ * useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
+ * Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License along with
+ * this program. If not, see
+ *
+ *  http://www.gnu.org/licenses/
+ *
+ *
+ * Copyright (C)
+ *  2018 Alexander Haase <ahaase@alexhaase.de>
+ */
+
+/**
+ * This file includes tweaks for the breadcrumbs.
+ *
+ * Breadcrumbs of this template should have no background (i.e. transparent
+ * background) and its crumbs should have the primary color of this theme.
+ */
+
+.breadcrumb {
+    /* Override the default colors of bootstrap breadcrumbs, so there is no
+     * background anymore and links are colorized with the theme's default green
+     * tone. */
+    background-color: transparent;
+    .breadcrumb-item {
+        a {
+            color: @brandColor;
+        }
+    }
+
+    /* Breadcrumbs should be aligned with the text in the navbar-branding and
+     * the directory index table. Therefore a left-padding is required. */
+    padding-left: 35px;
+}

@@ -1,0 +1,58 @@
+# This file is part of nginx-fancyindex-flat-theme.
+#
+# nginx-fancyindex-flat-theme is free software: you can redistribute it and/or
+# modify it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or (at your
+# option) any later version.
+#
+# nginx-fancyindex-flat-theme is distributed in the hope that it will be
+# useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
+# Public License for more details.
+#
+# You should have received a copy of the GNU General Public License along with
+# this program. If not, see
+#
+#  http://www.gnu.org/licenses/
+#
+#
+# Copyright (C)
+#  2018 Alexander Haase <ahaase@alexhaase.de>
+
+# This is the clang-format configuration for JavaScript files.
+#
+# Clang-format should help to beautify the code, so that every developer can
+# write code, while the beautifier will take care about the style guides. Please
+# read the README and/or docs for more informations, how to use this
+# configuration with clang-format.
+
+
+# Basicaly we use LLVM style, but have some changes listet in this
+# configuration.
+BasedOnStyle: LLVM
+
+# A maximum of two blank lines are allowed.
+MaxEmptyLinesToKeep: 3
+
+# If lines must be continued in a second line, indent the second line with two
+# spaces.
+ContinuationIndentWidth: 2
+
+
+---
+Language: JavaScript
+
+# The first parameter of a function declaration must be in the first line, the
+# other parameters may be in the following lines but will be aligned horizontal.
+AllowAllParametersOfDeclarationOnNextLine: false
+
+# Do not merge empty functions
+AllowShortFunctionsOnASingleLine: None
+
+# Break before any braces for new context.
+BreakBeforeBraces: GNU
+
+# Empty lines at the start of blocks will not be kept.
+KeepEmptyLinesAtTheStartOfBlocks: false
+
+...
