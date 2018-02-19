@@ -59,8 +59,8 @@ function breadcrumbs()
   for (var i = 0; i < crumbs.length; i++)
     {
       path += crumbs[i] + '/';
-      nav +=
-        crumb((i == 0) ? 'Home' : crumbs[i], path, (i == crumbs.length - 1));
+      nav += crumb((i == 0) ? 'Home' : decodeURIComponent(crumbs[i]), path,
+                   (i == crumbs.length - 1));
     }
 
   /* Update the breadcrumbs element's contents with the breadcrumbs navigation
