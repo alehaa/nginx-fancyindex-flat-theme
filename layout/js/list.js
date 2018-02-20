@@ -18,6 +18,19 @@
  *
  * Copyright (C)
  *  2018 Alexander Haase <ahaase@alexhaase.de>
+ *
+ *
+ * NOTE: The following comment will be used as short version of the copyright
+ *       notice above to be included in compressed files, too.
+ */
+
+/*!
+ *
+ * This file is part of the nginx-fancyindex-flat-theme, licensed under the GNU
+ * General Public License. See the LICENSE file for details.
+ *
+ * Copyright (C)
+ *  2018 Alexander Haase <ahaase@alexhaase.de>
  */
 
 /**
