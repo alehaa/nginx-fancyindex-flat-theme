@@ -27,134 +27,163 @@
  * This function will apply additional styles to it and adds an extra column for
  * icons.
  */
-function styleList()
+function generateList()
 {
   /**
-   * Get the font awesome icon to be used for a specific file.
+   * Get the filetype of a specific file based on the file extension.
    *
    *
    * @param string filename the filename to be checked
    *
+   * @return string the file's filetype
+   */
+  function getFileType(filename)
+  {
+    /* First, check if the file is a directory (i.e. has a trailing slash). */
+    if (filename.endsWith('/'))
+      return 'folder';
+
+    /* For all other kinds of files, check the file extension (converted to
+     * lower case to ignore the extension's case). */
+    switch (filename.split('.').pop().toLowerCase())
+      {
+      case 'txt':
+        return 'text';
+
+      case 'pdf':
+        return 'pdf';
+
+      case 'bmp':
+      case 'gif':
+      case 'jpeg':
+      case 'jpg':
+      case 'png':
+      case 'tif':
+      case 'tiff':
+        return 'image';
+
+      case 'aac':
+      case 'aiff':
+      case 'm4a':
+      case 'mp3':
+      case 'ogg':
+      case 'opus':
+      case 'wav':
+        return 'audio';
+
+      case 'amv':
+      case 'avi':
+      case 'flv':
+      case 'm4v':
+      case 'mkv':
+      case 'mov':
+      case 'mp4':
+      case 'm4p':
+      case 'mpeg':
+      case 'mpg':
+      case 'ogv':
+      case 'vob':
+      case 'webm':
+      case 'wmv':
+        return 'video';
+
+      case '7z':
+      case 'a':
+      case 'apk':
+      case 'ar':
+      case 'bin':
+      case 'bz2':
+      case 'cab':
+      case 'dmg':
+      case 'gz':
+      case 'iso':
+      case 'jar':
+      case 'lz':
+      case 'lzma':
+      case 'lzo':
+      case 'pak':
+      case 'partimg':
+      case 'rar':
+      case 's7z':
+      case 'tar':
+      case 'tbz2':
+      case 'tgz':
+      case 'tlz':
+      case 'txz':
+      case 'xz':
+      case 'zip':
+        return 'archive';
+
+      case 'doc':
+      case 'docx':
+      case 'odt':
+      case 'rtf':
+        return 'word';
+
+      case 'csv':
+      case 'ods':
+      case 'xls':
+      case 'xlsx':
+        return 'excel';
+
+      case 'odp':
+      case 'ppt':
+      case 'pptx':
+        return 'powerpoint';
+
+      case 'c':
+      case 'class':
+      case 'cpp':
+      case 'cs':
+      case 'h':
+      case 'hpp':
+      case 'hxx':
+      case 'java':
+      case 'py':
+      case 'sh':
+      case 'swift':
+      case 'vb':
+        return 'code';
+      }
+  }
+
+
+  /**
+   * Get the font awesome icon to be used for a specific filetype.
+   *
+   *
+   * @param string filetype the filetype for wich an icon is required
+   *
    * @return string the HTML icon tag to be used
    */
-  function getIcon(filename)
+  function getIcon(filetype)
   {
     /**
      * Get the font awesome class of the icon to be used.
      *
      *
-     * @param string filename the filename to be checked
+     * @param string filetype the filetype for wich an icon is required
      *
      * @return string the icon class to be used
      */
-    function getFontAwesomeClass(filename)
+    function getFontAwesomeClass(filetype)
     {
-      /* If the file is a directory (i.e. has a trailing slash), return the
-       * folder icon without further checking. */
-      if (filename.endsWith('/'))
-        return 'fa-folder';
-
-      /* For all other kinds of files, check the file extension and select an
-       * icon based on this extension. */
-      switch (filename.split('.').pop())
+      switch (filetype)
         {
-        case 'txt':
-          return 'fa-file-text-o';
+        case 'folder':
+          return 'fa-folder';
 
+        case 'archive':
+        case 'audio':
+        case 'code':
+        case 'excel':
+        case 'image':
         case 'pdf':
-          return 'fa-file-pdf-o';
-
-        case 'bmp':
-        case 'gif':
-        case 'jpeg':
-        case 'jpg':
-        case 'png':
-        case 'tif':
-        case 'tiff':
-          return 'fa-file-image-o';
-
-        case 'aac':
-        case 'aiff':
-        case 'm4a':
-        case 'mp3':
-        case 'ogg':
-        case 'opus':
-        case 'wav':
-          return 'fa-file-audio-o';
-
-        case 'amv':
-        case 'avi':
-        case 'flv':
-        case 'm4v':
-        case 'mkv':
-        case 'mov':
-        case 'mp4':
-        case 'm4p':
-        case 'mpeg':
-        case 'mpg':
-        case 'ogv':
-        case 'vob':
-        case 'webm':
-        case 'wmv':
-          return 'fa-file-video-o';
-
-        case '7z':
-        case 'a':
-        case 'apk':
-        case 'ar':
-        case 'bin':
-        case 'bz2':
-        case 'cab':
-        case 'dmg':
-        case 'gz':
-        case 'iso':
-        case 'jar':
-        case 'lz':
-        case 'lzma':
-        case 'lzo':
-        case 'pak':
-        case 'partimg':
-        case 'rar':
-        case 's7z':
-        case 'tar':
-        case 'tbz2':
-        case 'tgz':
-        case 'tlz':
-        case 'txz':
-        case 'xz':
-        case 'zip':
-          return 'fa-file-archive-o';
-
-        case 'doc':
-        case 'docx':
-        case 'odt':
-        case 'rtf':
-          return 'fa-file-word-o';
-
-        case 'csv':
-        case 'ods':
-        case 'xls':
-        case 'xlsx':
-          return 'fa-file-excel-o';
-
-        case 'odp':
-        case 'ppt':
-        case 'pptx':
-          return 'fa-file-powerpoint-o';
-
-        case 'c':
-        case 'class':
-        case 'cpp':
-        case 'cs':
-        case 'h':
-        case 'hpp':
-        case 'hxx':
-        case 'java':
-        case 'py':
-        case 'sh':
-        case 'swift':
-        case 'vb':
-          return 'fa-file-code-o';
+        case 'powerpoint':
+        case 'text':
+        case 'video':
+        case 'word':
+          return 'fa-file-' + filetype + '-o';
 
         /* If none of the previous types matched, use a generic file icon. */
         default:
@@ -164,9 +193,10 @@ function styleList()
 
     /* Return the file icon HTML tag to be used for the file passed to this
      * function. */
-    return '<i class="fa fa-fw ' + getFontAwesomeClass(filename) +
+    return '<i class="fa fa-fw ' + getFontAwesomeClass(filetype) +
            '" aria-hidden="true"></i>';
   }
+
 
   var list = document.getElementById("list");
 
@@ -192,8 +222,8 @@ function styleList()
   for (var i = 0, row; row = list.rows[i]; i++)
     {
       /* Add a new cell for the file-type icon. */
-      row.insertCell(0).innerHTML =
-        (i > 0) ? getIcon(row.cells[1].children[0].innerHTML) : '';
+      filetype = getFileType(row.cells[0].children[0].innerHTML);
+      row.insertCell(0).innerHTML = (i > 0) ? getIcon(filetype) : '';
 
       /* Set the classes for all cells. All cells except the filename will fit
        * their contents. The filename cell is the only allowed to wrap. The last
@@ -203,5 +233,10 @@ function styleList()
       row.cells[1].classList.add('col', 'filename');
       row.cells[2].classList.add('col-auto', 'd-none', 'd-md-table-cell');
       row.cells[3].classList.add('col-auto', 'd-none', 'd-md-table-cell');
+
+      /* If the file is a picture, add the data attribute for lightbox2, so one
+       * is able to easily navigate through the pictures. */
+      if (filetype == 'image')
+        row.cells[1].children[0].setAttribute('data-lightbox', 'roadtrip');
     }
 }

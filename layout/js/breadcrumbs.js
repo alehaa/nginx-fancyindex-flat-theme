@@ -26,7 +26,7 @@
  * This function will generate the breadcrumbs for the current page and updates
  * the 'breadcrumbs' element with the list of crumbs.
  */
-function breadcrumbs()
+function generateBreadcrumbs()
 {
   /**
    * Print a single breadcrumb.
