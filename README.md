@@ -6,6 +6,8 @@
 
 ## About
 
+![](doc/screenshot.png)
+
 The [fancyindex module](https://github.com/aperezdc/ngx-fancyindex) of
 [nginx](http://nginx.org/) has the powerful capability to be customizable.
 Instead of using an external application, this gives us the ability to use use
