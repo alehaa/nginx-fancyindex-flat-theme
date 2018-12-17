@@ -3,10 +3,10 @@
 [![](https://img.shields.io/github/issues-raw/alehaa/nginx-fancyindex-flat-theme.svg?style=flat-square)](https://github.com/alehaa/nginx-fancyindex-flat-theme/issues)
 [![](https://img.shields.io/badge/license-GPLv3-blue.svg?style=flat-square)](LICENSE)
 
+![](doc/screenshot.png)
+
 
 ## About
-
-![](doc/screenshot.png)
 
 The [fancyindex module](https://github.com/aperezdc/ngx-fancyindex) of
 [nginx](http://nginx.org/) has the powerful capability to be customizable.
