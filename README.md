@@ -4,6 +4,7 @@
 [![](https://img.shields.io/badge/license-GPLv3-blue.svg?style=flat-square)](LICENSE)
 
 ![](doc/screenshot.png)
+![](doc/screenshot-thumbs.png)
 
 
 ## About
