@@ -32,3 +32,16 @@ body {
      * the content and the footer. */
     padding-bottom: @footer-height;
 }
+
+/* If the client prefers a dark color scheme, the following classes will be
+ * applied to give the site a dark look and feel.
+ *
+ * NOTE: These classes need to be at the end of this file, as they override the
+ *       default settings previously defined, if the dark color scheme is
+ *       requested. */
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: @gray-800;
+        color:            white;
+    }
+}
