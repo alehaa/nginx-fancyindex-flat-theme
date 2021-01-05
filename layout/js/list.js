@@ -161,6 +161,19 @@ function generateList()
   }
 
 
+  function getThumbnail(file)
+  {
+    var dimensions="-128x128"
+    var pos = file.lastIndexOf(".");
+    var ext = "";
+    var fileNoExt = filename;
+    if (pos >= 0) {
+      ext = file.substr(pos, file.length);
+      fileNoExt = file.substr(0, pos);
+    }
+    return "/thumbs" + window.location.pathname + "/" + fileNoExt + dimensions + ext;
+  }
+
   /**
    * Get the font awesome icon to be used for a specific filetype.
    *
@@ -235,21 +248,25 @@ function generateList()
   for (var i = 0, row; row = list.rows[i]; i++)
     {
       /* Add a new cell for the file-type icon. */
-      filetype = getFileType(row.cells[0].children[0].innerHTML);
+      filename = row.cells[0].children[0].innerHTML;
+      filetype = getFileType(filename);
       row.insertCell(0).innerHTML = (i > 0) ? getIcon(filetype) : '';
 
       /* Set the classes for all cells. All cells except the filename will fit
        * their contents. The filename cell is the only allowed to wrap. The last
        * two cells (file size and last-modified date) will be hidden on small
        * (i.e. mobile) devices.*/
-      row.cells[0].classList.add('col-auto');
-      row.cells[1].classList.add('col', 'filename');
-      row.cells[2].classList.add('col-auto', 'd-none', 'd-md-table-cell');
-      row.cells[3].classList.add('col-auto', 'd-none', 'd-md-table-cell');
+      row.cells[0].classList.add('col-auto', 'align-middle');
+      row.cells[1].classList.add('col', 'filename', 'align-middle');
+      row.cells[2].classList.add('col-auto', 'd-none', 'd-md-table-cell', 'align-middle');
+      row.cells[3].classList.add('col-auto', 'd-none', 'd-md-table-cell', 'align-middle');
 
       /* If the file is a picture, add the data attribute for lightbox2, so one
        * is able to easily navigate through the pictures. */
-      if (filetype == 'image')
+      if (filetype == 'image') {
         row.cells[1].children[0].setAttribute('data-lightbox', 'roadtrip');
+        row.cells[1].children[0].innerHTML = '<img class="thumb" src="'+getThumbnail(filename)+'"></img>&nbsp;' + row.cells[1].children[0].innerHTML;
+      }
     }
 }
+
