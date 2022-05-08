@@ -10,8 +10,8 @@
 
 The [fancyindex module](https://github.com/aperezdc/ngx-fancyindex) of
 [nginx](http://nginx.org/) has the powerful capability to be customizable.
-Instead of using an external application, this gives us the ability to use use
-just the webservers capabilities to generate beautiful directory listings.
+Instead of using an external application, this gives us the ability to use
+just the webserver's capabilities to generate beautiful directory listings.
 
 This theme provides a simple, flat interface based on
 [Bootstrap 4](https://getbootstrap.com), [Font Awesome](https://fontawesome.com)
@@ -24,10 +24,10 @@ dynamic code.
 
 ## Usage
 
-1. Get the latest ressources from [GitHub releases](https://github.com/alehaa/nginx-fancyindex-flat-theme/releases)
+1. Get the latest resources from [GitHub releases](https://github.com/alehaa/nginx-fancyindex-flat-theme/releases)
    or build them on your own by running `make` inside this repository and copy
    these files into any location accessible by *nginx*.
-2. Configure your vhost to use the theme's ressources for fancyindex:
+2. Configure your vhost to use the theme's resources for fancyindex:
     ```
     # Fancyindex
     fancyindex             on;
