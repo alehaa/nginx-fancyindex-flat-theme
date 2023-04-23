@@ -38,8 +38,8 @@ dynamic code.
     fancyindex_exact_size  off;
     fancyindex_localtime   on;
 
-    location /theme {
-        alias /srv/www/fileserver/theme;
+    location /theme/{
+        alias /srv/www/fileserver/theme/;
     }
     ```
 
