@@ -4,6 +4,7 @@
 [![](https://img.shields.io/badge/license-GPLv3-blue.svg?style=flat-square)](LICENSE)
 
 ![](doc/screenshot.png)
+![](doc/screenshot-thumbs.png)
 
 
 ## About
@@ -42,7 +43,36 @@ dynamic code.
         alias /srv/www/fileserver/theme/;
     }
     ```
+3. To enable image thumbnails, configure nginx to generate and cache if neccessary:
+    ```
+    # 3.1. thumbnail images cache (outside server block)
+    proxy_cache_path /tmp/nginx-images-cache/ levels=1:2 keys_zone=images:10m inactive=30d max_size=1024m;
 
+    # 3.2 separate server to serve thumbnails internally
+    server {
+        # Internal image resizing server.
+        server_name localhost;
+        listen 8181;
+
+        root /srv/www/fileserver;
+
+        location ~ ^(?i)/thumbs/(.+)-([0-9]+)x([0-9]+)\.(jpg|jpeg|png|gif|webp)$ {
+                image_filter_buffer 30M; # Will return 415 if image is bigger than this
+                image_filter_jpeg_quality 80; # Desired JPG quality
+                image_filter_interlace on; # For progressive JPG
+                image_filter resize $2 $3;
+                alias '/srv/www/fileserver/$1.$4';
+        }
+    }
+
+    # 3.3 location should be within main server block to serve thumbnails outside
+    location ~ ^/thumbs {
+            proxy_pass 'http://127.0.0.1:8181/$uri';
+            proxy_cache images;
+            proxy_cache_valid 200 30d;
+            proxy_cache_key $scheme$proxy_host$uri;
+    }
+    ```
 
 ## License
 
